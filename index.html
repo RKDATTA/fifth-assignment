@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,11 +9,31 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
+
 <body>
-    
-    <h1>Hungry Monster</h1>
+
+    <h1 class="hungry">Hungry Monster</h1>
+
+    <div id="meals">
+
+    </div>
+
+    <div id="meal-list" class="d-flex bd-highlight">
+        <div class="p-2 flex-fill bd-highlight">
+            <div class="input-group mb-3">
+                <input id="food-menu" type="text" class="form-control" placeholder="Search for meal" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+        </div>
+        
+        <div id="mealDiv" class="p-2 flex-fill bd-highlight">
+            <button type="button" class="btn btn-danger">Search</button>    
+        </div>
+    </div>
+
+
 
     <script src="js/hungry.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

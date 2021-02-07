@@ -1,0 +1,26 @@
+
+
+body{
+    background-color: orange !important;
+}
+
+.hungry{
+    text-align: center;
+    color : blue;
+}
+
+#food-menu{
+    width : 300px;
+    text-align: center;
+    margin-left: 250px;
+}
+
+#meals{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap:10px;
+}
+
+.meal-menu{
+    margin-left: 100px;;
+}
