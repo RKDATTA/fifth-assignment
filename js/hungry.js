@@ -4,6 +4,7 @@ fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
     .then(res => res.json())
     .then(data => displayMeals(data.categories))
 
+ 
 const displayMeals = categories =>{
 
     const mealsDiv = document.getElementById('meals')
@@ -18,14 +19,14 @@ const displayMeals = categories =>{
         // mealDiv.appendChild(h3)
         mealDiv.className = "meal-menu"
         const mealInfo = `
+        <img src="${eachMeal.strCategoryThumb}">
         <h3>${eachMeal.strCategory} </h3>
-        <button onclick="displayEachMeal(${eachMeal.idMeal})"> Details</button>
-    
         `
         mealDiv.innerHTML = mealInfo;
 
         mealsDiv.appendChild(mealDiv)       
     });
+}
 
     const displayEachMeal = eachMeal =>{
         const url = 'https://www.themealdb.com/api/json/v1/1/search.php?f=a';
@@ -42,9 +43,10 @@ const displayMeals = categories =>{
         mealDiv.innerHTML = `
         <h1>${eachMeal.strCategory} </h1>
         <img src="${meals.strMealThumb}">
-        
+
         `
     }
+//SAVEED
 
     // for (let i = 0; i < categories.length; i++) {
     //     const eachMeal = categories[i];
@@ -57,13 +59,13 @@ const displayMeals = categories =>{
     //     mealDiv.className = "meal-menu"
     //     const mealInfo = `
     //     <h3>${eachMeal.strCategory} </h3>
-    
+
     //     `
     //     mealDiv.innerHTML = mealInfo;
 
     //     mealsDiv.appendChild(mealDiv)
     // }
-}
+// }
 
 
 //REST COUNTRIES:

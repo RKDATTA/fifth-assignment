@@ -10,17 +10,23 @@ body{
 }
 
 #food-menu{
-    width : 300px;
+    width : 250px;
     text-align: center;
-    margin-left: 250px;
+    margin-left: 50px;
 }
 
 #meals{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap:10px;
+    grid-template-columns: repeat(4, 0.5fr);
+    grid-gap:5px;
 }
 
-.meal-menu{
-    margin-left: 100px;;
+
+.meal-menu h3{
+    text-align: center;
+
+}
+.meal-menu img{
+    width : 200px;
+    height: 75px;
 }
