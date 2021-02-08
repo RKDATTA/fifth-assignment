@@ -26,6 +26,10 @@ body{
     text-align: center;
 
 }
+.meal-menu h3 a{
+    text-decoration: none;
+
+}
 .meal-menu img{
     width : 200px;
     height: 75px;

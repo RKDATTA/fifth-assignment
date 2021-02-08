@@ -1,26 +1,25 @@
+//REVISION:
+const searchFoods = ()=>{
+    const searchText = document.getElementById('search-field').value;
+    console.log(searchText);
 
-
-fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
+    const url = `https://www.themealdb.com/api/json/v1/1/categories.php/:${searchText}`
+    //Load Categories
+    fetch(url)
     .then(res => res.json())
-    .then(data => displayMeals(data.categories))
+    .then(data =>displayMeals(data.categories))
 
- 
-const displayMeals = categories =>{
+}
 
+const displayMeals = categories =>{    
     const mealsDiv = document.getElementById('meals')
-
     categories.forEach(eachMeal => {
-        // const eachMeal = categories[i];
-
         const mealDiv = document.createElement('div')
 
-        // const h3 = document.createElement('h3')
-        // h3.innerText = eachMeal.strCategory;
-        // mealDiv.appendChild(h3)
         mealDiv.className = "meal-menu"
         const mealInfo = `
         <img src="${eachMeal.strCategoryThumb}">
-        <h3>${eachMeal.strCategory} </h3>
+        <h3> <a href="displayIngredient('meals.idMeal')">${eachMeal.strCategory}</a></h3>
         `
         mealDiv.innerHTML = mealInfo;
 
@@ -28,26 +27,25 @@ const displayMeals = categories =>{
     });
 }
 
-    const displayEachMeal = eachMeal =>{
-        const url = 'https://www.themealdb.com/api/json/v1/1/search.php?f=a';
-        console.log(url);
+const displayIngredient = (id) =>{
+    const url = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}'
+    fetch(url)
+    .then(res => res.json())
+    .then(data => renderMealInfo(data.meals));
+}
 
-        fetch(url)
-        .then(res => res.json())
-        .then(data => renderMealInfo(data.meals))
+const renderMealInfo = ingredient =>{
+    const ingredientDiv = document.getElementById('ingredientDetails');
+    ingredientDiv.innerHTML = `
+        <h2> ${ingredient.strIngredient1}</h2>
+        <p> ${ingredient.strIngredient2}</p>
+        <p> ${ingredient.strIngredient3}</p>
+        <p> ${ingredient.strIngredient4}</p>
+        <p> ${ingredient.strIngredient5}</>
+    `
+}
 
-    }
-    const renderMealInfo = eachMeal=>{
-        console.log(meals);
-        const mealDiv = document.getElementById('mealDiv')
-        mealDiv.innerHTML = `
-        <h1>${eachMeal.strCategory} </h1>
-        <img src="${meals.strMealThumb}">
-
-        `
-    }
 //SAVEED
-
     // for (let i = 0; i < categories.length; i++) {
     //     const eachMeal = categories[i];
 
