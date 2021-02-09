@@ -1,49 +1,48 @@
-//REVISION:
+
+
+
+//FINAL-REVISION:
 const searchFoods = ()=>{
     const searchText = document.getElementById('search-field').value;
-    console.log(searchText);
 
-    const url = `https://www.themealdb.com/api/json/v1/1/categories.php/:${searchText}`
+    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`
     //Load Categories
     fetch(url)
     .then(res => res.json())
-    .then(data =>displayMeals(data.categories))
+    .then(data =>displayMeals(data.meals))
 
 }
 
-const displayMeals = categories =>{    
+const displayMeals = meals =>{    
     const mealsDiv = document.getElementById('meals')
-    categories.forEach(eachMeal => {
-        const mealDiv = document.createElement('div')
+    meals.forEach(eachMeal => {
+        const mealDiv = document.createElement('div');
 
         mealDiv.className = "meal-menu"
+
         const mealInfo = `
-        <img src="${eachMeal.strCategoryThumb}">
-        <h3> <a href="displayIngredient('meals.idMeal')">${eachMeal.strCategory}</a></h3>
+        <div onclick ="displayIngredient('${eachMeal.strIngredient1}','${eachMeal.strIngredient2}', '${eachMeal.strIngredient3}', '${eachMeal.strIngredient4}', '${eachMeal.strIngredient5}')"> 
+        <img src="${eachMeal.strMealThumb}">
+        <h3>${eachMeal.strMeal}</h3>
+        </div>
         `
         mealDiv.innerHTML = mealInfo;
-
         mealsDiv.appendChild(mealDiv)       
     });
 }
 
-const displayIngredient = (id) =>{
-    const url = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}'
-    fetch(url)
-    .then(res => res.json())
-    .then(data => renderMealInfo(data.meals));
+const displayIngredient = (strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5) =>{
+        const ingredientDiv = document.getElementById('ingredientDetails');
+        ingredientDiv.innerHTML = `
+            <h2> ${strIngredient1}</h2>
+            <p> ${strIngredient2}</p>
+            <p> ${strIngredient3}</p>
+            <p> ${strIngredient4}</p>
+            <p> ${strIngredient5}</>
+        `
 }
 
-const renderMealInfo = ingredient =>{
-    const ingredientDiv = document.getElementById('ingredientDetails');
-    ingredientDiv.innerHTML = `
-        <h2> ${ingredient.strIngredient1}</h2>
-        <p> ${ingredient.strIngredient2}</p>
-        <p> ${ingredient.strIngredient3}</p>
-        <p> ${ingredient.strIngredient4}</p>
-        <p> ${ingredient.strIngredient5}</>
-    `
-}
+
 
 //SAVEED
     // for (let i = 0; i < categories.length; i++) {
